@@ -1,13 +1,23 @@
-﻿var app = angular.module("patientApp", []);
+﻿var app = angular.module("patientApp", ['ngRoute', 'patientControllers']);
 
-app.controller("PatientCtrl", function ($scope, $http) {
-    
-    $http.get('Patient.json')
-    .success(function (data, status, headers, config) {
-        $scope.patients = data;
-    })
-    .error(function (data, stataus, heders, config) {
-        alert("error retrieving file");
-    });
-    $scope.orderProp = "firstName";
-});
+app.config(['$routeProvider',
+  function ($routeProvider) {
+        $routeProvider
+        //serve up the list of customers
+        .when('/Patients', {
+            templateUrl: 'Views/PatientList.html',
+            controller: 'PatientListCtrl'
+        })
+        .when('/NewPatient', {
+            templateUrl: 'Views/PatientNew.html',
+            controller: 'PatientNewCtrl'
+        })
+        .when('/PatientDetails/:id', {
+            templateUrl: 'Views/PatientDetails.html',
+            controller: 'PatientDetailCtrl'
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
+        
+    }]);

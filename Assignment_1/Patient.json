@@ -1,13 +1,15 @@
 ﻿
 [
   { 
+	"id":1,
     "firstName":"Joanne",
 	"lastName":"Tanson",
 	"phoneNo":"647-648-7279",
-	"lastVisitDate":"2015-01-16",
+	"lastVisitDate":"01/16/2015",
 	"Status":"Active"
   },
   { 
+	"id":2,
     "firstName":"Adam",
 	"lastName":"Tieao",
 	"phoneNo":"647-315-7812",
@@ -15,6 +17,7 @@
 	"Status":"Active"
   },
   { 
+	"id":3,
     "firstName":"Zexu",
 	"lastName":"Zhao",
 	"phoneNo":"416-586-2134",
@@ -22,6 +25,7 @@
 	"Status":"Active"
   },
   { 
+	"id":4,
     "firstName":"Miro",
 	"lastName":"Klose",
 	"phoneNo":"647-031-2430",
@@ -29,6 +33,7 @@
 	"Status":"Active"
   },
   { 
+	"id":5,
     "firstName":"Thomas",
 	"lastName":"Muller",
 	"phoneNo":"416-319-8796",

@@ -31,11 +31,26 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="controller.js" />
+    <Compile Include="scripts\lib\angular-route.js" />
+    <Compile Include="scripts\lib\angular-route.min.js" />
+    <Compile Include="scripts\lib\angular.js" />
+    <Compile Include="scripts\lib\angular.min.js" />
     <Compile Include="server.js" />
+    <Content Include="css\main.css" />
     <Content Include="index.html" />
     <Content Include="package.json" />
     <Content Include="Patient.json" />
     <Content Include="README.md" />
+    <Content Include="Views\PatientDetails.html" />
+    <Content Include="Views\PatientList.html" />
+    <Content Include="Views\PatientNew.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="scripts\" />
+    <Folder Include="scripts\lib\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

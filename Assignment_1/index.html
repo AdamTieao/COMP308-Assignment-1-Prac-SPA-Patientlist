@@ -16,32 +16,22 @@
 
     <!-- Angular.js Script Source Link -->    
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="scripts/lib/angular-route.js"></script>
+
     <script src="app.js"></script>
+    <script src="controller.js"></script>
+
+    <link href="css/main.css" rel="stylesheet" />
 
 </head>
 <body ng-app="patientApp">
     <h1 class="page-header">Patient List</h1>
-    <div ng-controller="PatientCtrl">
-        <div>
-            Search: <input ng-model="query">
-            Sort by:
-            <select ng-model="orderProp">
-                <option value="firstName">First Name</option>
-                <option value="lastName">Last Name</option>                
-            </select>
-            <select ng-model="ord">
-                <option value="true">ASC</option>
-                <option value="false">DESC</option>
-            </select>
-        </div>
-        <ul class="list-group" ng-repeat="patient in patients | filter:query | orderBy:orderProp">
-            <li class="list-group-item">
-                First Name: <span class="label label-primary">{{patient.firstName}}</span> Last Name: <span class="label label-primary">{{patient.lastName}}</span><br />
-                Phone Number: <span class="label label-primary">{{patient.phoneNo}}</span><br />
-                Last Visit Date: <span class="label label-primary">{{patient.lastVisitDate}}</span><br />
-                Status: <span class="label label-primary">{{patient.Status}}</span>
-            </li>
-        </ul>
+    <ul>
+        <li><a href="#Patients"> Patient List </a></li>
+        <li><a href="#NewPatient"> New Patient </a></li>
+    </ul>
+    <div>
+        <div ng-view></div>
     </div>
 </body>
 </html>
