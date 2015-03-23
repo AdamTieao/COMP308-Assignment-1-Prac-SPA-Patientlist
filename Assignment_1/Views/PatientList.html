@@ -1,20 +1,31 @@
-﻿<div ng-controller="PatientListCtrl">
+﻿<!-- list of names of all patients view -->
+<div ng-controller="PatientListCtrl">
     <div>
         Search: <input ng-model="query">
         Sort by:
         <select ng-model="orderProp">
             <option value="firstName">First Name</option>
             <option value="lastName">Last Name</option>
+            <option value="id">ID</option>
         </select>
         <select ng-model="orderType">
             <option value="">ASC</option>
             <option value="reverse">DESC</option>
         </select>
     </div>
-    <ul class="list-group" ng-repeat="patient in patients | filter:query | orderBy:orderProp:orderType">
-        <li class="list-group-item">
-            <a href="#PatientDetails/{{patient.id}}">(Edit)</a> First Name: <span class="label label-primary">{{patient.firstName}}</span> Last Name: <span class="label label-primary">{{patient.lastName}}</span><br />
-            
-        </li>
-    </ul>
+    <br />
+    <table align="center" class="table table-striped">
+        <tr class="success">
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Action</th>
+        </tr>
+        <tr ng-repeat="patient in patients | filter:query | orderBy:orderProp:orderType">
+            <td>{{patient.id}}</td>
+            <td>{{patient.firstName}}</td>
+            <td>{{patient.lastName}}</td>
+            <td><a href="#PatientDetails/{{patient.id}}">(<span class="edit">Edit</span>)</a> </td>
+        </tr>
+    </table>
 </div>

@@ -1,3 +1,13 @@
 ﻿body {
-    margin-left: 2cm;
+    margin-left: 1cm;
+}
+
+.copyright {
+    position:fixed;
+    bottom:5px;
+    font-weight:bold    
+}
+
+.edit{
+    text-decoration:underline;
 }
