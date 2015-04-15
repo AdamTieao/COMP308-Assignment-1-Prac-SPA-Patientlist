@@ -13,7 +13,7 @@
     "firstName":"Adam",
 	"lastName":"Tieao",
 	"phoneNo":"647-315-7812",
-	"lastVisitDate":"2014-12-12",
+	"lastVisitDate":"12/12/2014",
 	"Status":"Active"
   },
   { 
@@ -21,7 +21,7 @@
     "firstName":"Zexu",
 	"lastName":"Zhao",
 	"phoneNo":"416-586-2134",
-	"lastVisitDate":"2015-01-11",
+	"lastVisitDate":"11/01/2015",
 	"Status":"Active"
   },
   { 
@@ -29,7 +29,7 @@
     "firstName":"Miro",
 	"lastName":"Klose",
 	"phoneNo":"647-031-2430",
-	"lastVisitDate":"2015-02-13",
+	"lastVisitDate":"13/02/2015",
 	"Status":"Active"
   },
   { 
@@ -37,7 +37,7 @@
     "firstName":"Thomas",
 	"lastName":"Muller",
 	"phoneNo":"416-319-8796",
-	"lastVisitDate":"2014-12-29",
+	"lastVisitDate":"29/12/2014",
 	"Status":"Active"
   }
 ]

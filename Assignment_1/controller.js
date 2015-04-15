@@ -3,7 +3,9 @@ var patientControllers = angular.module("patientControllers", []);
 
 // a memory of patient
 var patientMem = [];
-var patientEdit;
+var patientBeforeEdit;
+var patientAfterEdit;
+var patientNew;
 var index;
 var idLength;
 
@@ -36,10 +38,13 @@ patientControllers.controller("PatientListCtrl", ['$scope', '$http', function ($
 patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams','$http','$location',
   function ($scope, $routeParams, $http, $location) {
         
+        var isValid = false;
+        // validation
         $scope.fn = /([A-Z]{1}[a-z]*)\w+/;
         $scope.ln = /([A-Z]{1}[a-z]*)\w+/;
         $scope.pn = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-        $scope.dt = /^([0]?[1-9]|[1][0-2])[./-]([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0 - 9]{ 4}|[0-9]{ 2})$/;
+        $scope.dt = /^[0-3]?[0-9]\/[01]?[0-9]\/[12][90][0-9][0-9]$/;
+        $scope.st = /^(Active|Inactive)$/;        
         
       // check which patient is selected
         console.log($routeParams);
@@ -48,7 +53,7 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams','$h
 
         $scope.patients = patientMem;
         $scope.patient = $scope.patients[index - 1];
-        patientEdit = $scope.patients[index - 1];
+        patientBeforeEdit = $scope.patients[index - 1];
 
         $scope.save = function () {
             
@@ -65,18 +70,37 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams','$h
                 "lastVisitDate": $scope.patient.lastVisitDate, "Status": $scope.patient.Status
             };
             
-            console.log($scope.patient);
-            if (index != -1) {
-                patientMem[index - 1] = patientEdit;
-                alert("Made change of the patient with ID of: " + $scope.patient.id);
-                index = -1;
-            }
-            else { 
-                alert("Please go back to select the patient to edit!");
-            }
+            patientAfterEdit = $scope.patient;
             
-            console.log(patientMem);
-            $scope.patient = "";
+            console.log(patientAfterEdit.firstName);
+
+            if (patientAfterEdit.firstName != null 
+                && patientAfterEdit.lastName != null 
+                && patientAfterEdit.phoneNo != null 
+                && patientAfterEdit.lastVisitDate != null 
+                && patientAfterEdit.Status != null) {
+                isValid = true;
+            }
+
+            console.log($scope.patient);
+            
+            // Stop user from clicking save again
+            if (index != -1) {
+                if (isValid) {
+                    patientMem[index - 1] = patientAfterEdit;
+                    alert("Made change of the patient with ID of: " + $scope.patient.id);
+                    index = -1;
+                    // Show the data after modification
+                    console.log(patientMem);
+                    $scope.patient = "";
+                }
+                else {
+                    alert("Please validate your fields!");
+                }
+            }
+            else {
+                alert("Please go back to select the patient to edit!");
+            }            
         }       
             
     }]);
@@ -90,11 +114,12 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams','$h
         $scope.fn = /([A-Z]{1}[a-z]*)\w+/;
         $scope.ln = /([A-Z]{1}[a-z]*)\w+/;
         $scope.pn = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
-        $scope.dt = /^([0]?[1-9]|[1][0-2])[./-]([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0 - 9]{ 4}|[0-9]{ 2})$/;
-
+        $scope.dt = /^[0-3]?[0-9]\/[01]?[0-9]\/[12][90][0-9][0-9]$/;
+        $scope.st = /^(Active|Inactive)$/;
 
         $scope.savePatient = function () {
             
+            var isValid = false;
             // to check if savePatient() is called
             console.log('save');
             
@@ -104,12 +129,29 @@ patientControllers.controller('PatientDetailCtrl', ['$scope', '$routeParams','$h
                 "lastName": $scope.patient.lastName, "phoneNo": $scope.patient.phoneNo,
                 "lastVisitDate": $scope.patient.lastVisitDate, "Status": $scope.patient.Status
             };
+            
+            patientNew = $scope.patient;
+            
+            console.log(patientNew);
+            
+            if (patientNew.firstName != null 
+                && patientNew.lastName != null 
+                && patientNew.phoneNo != null 
+                && patientNew.lastVisitDate != null 
+                && ppatientNew.Status != null) {
+                isValid = true;
+            }
 
             console.log($scope.patient);
-            patientMem.push($scope.patient);
-            alert("Added a patient with ID of: " + $scope.patient.id);
-            console.log(patientMem);
-            $scope.patient = "";
+            if (isValid) {
+                patientMem.push(patientNew);
+                alert("Added a patient with ID of: " + $scope.patient.id);
+                console.log(patientMem);
+                $scope.patient = "";
+            }
+            else { 
+                alert("Please validate your fields!");
+            }            
         }       
         
 

@@ -14,13 +14,13 @@
         <div class="form-group">
             <input class="form-control" type="text" ng-model="patient.phoneNo" ng-pattern="pn" required />
         </div>
-        <div>Last Visit Date</div>
+        <div>Last Visit Date (DD/MM/YYYY)</div>
         <div class="form-group">
-            <input class="form-control" type="text" ng-model="patient.lastVisitDate" required />
+            <input class="form-control" type="text" ng-model="patient.lastVisitDate" ng-pattern="dt" required />
         </div>
-        <div>Status</div>
+        <div>Status (Active or Inactive)</div>
         <div class="form-group">
-            <input class="form-control" type="text" ng-model="patient.Status" required />
+            <input class="form-control" type="text" ng-model="patient.Status" ng-pattern="st" required />
         </div>
         <br />
         <br />
